@@ -9,7 +9,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".CertiNumActivity"></activity>
+        <activity android:name=".RecieveActivity" />
+        <activity android:name=".RecieveListActivity" />
+        <activity android:name=".RecieveNotiActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".SuccessActivity" />
         <activity android:name=".SendToActivity" />
         <activity android:name=".RecievePopupActivity" />
