@@ -8,7 +8,8 @@
         android:label="SENDWHICH"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".JoinActivity"></activity>
         <activity android:name=".CertiNumActivity" />
         <activity android:name=".RecieveActivity" />

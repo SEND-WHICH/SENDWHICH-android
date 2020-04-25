@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".LoginActivity">
+    tools:context=".JoinActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,7 +99,6 @@
                     android:background="@drawable/inputtext"
                     android:ems="10"
                     android:hint="이름"
-                    android:inputType="textPassword"
                     android:paddingLeft="15dp"
                     android:textColor="@android:color/background_dark"
                     android:textSize="18sp"
