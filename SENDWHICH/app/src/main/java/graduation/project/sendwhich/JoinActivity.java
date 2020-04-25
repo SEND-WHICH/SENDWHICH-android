@@ -1,6 +1,5 @@
 package graduation.project.sendwhich;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,50 +8,48 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class JoinActivity extends AppCompatActivity {
+
     private EditText mEmailView;
     private EditText mPasswordView;
-    private Button mEmailLoginButton;
+    private EditText mNameView;
     private Button mJoinButton;
     private ProgressBar mProgressView;
     private ServiceApi service;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mEmailView = (EditText) findViewById(R.id.login_email);
-        mPasswordView = (EditText) findViewById(R.id.login_password);
-        mEmailLoginButton = (Button) findViewById(R.id.login_button);
+        setContentView(R.layout.activity_join);
+
+        mEmailView = (EditText) findViewById(R.id.join_email);
+        mPasswordView = (EditText) findViewById(R.id.join_password);
+        mNameView = (EditText) findViewById(R.id.join_name);
         mJoinButton = (Button) findViewById(R.id.join_button);
-        //mProgressView = (ProgressBar) findViewById(R.id.login_progress);
+        //mProgressView = (ProgressBar) findViewById(R.id.join_progress);
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
-        mEmailLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
         mJoinButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                attemptJoin();
             }
         });
     }
 
-    private void attemptLogin() {
+    private void attemptJoin() {
+        mNameView.setError(null);
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
+        String name = mNameView.getText().toString();
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
@@ -81,26 +78,38 @@ public class LoginActivity extends AppCompatActivity {
             cancel = true;
         }
 
+        // 이름의 유효성 검사
+        if (name.isEmpty()) {
+            mNameView.setError("이름을 입력해주세요.");
+            focusView = mNameView;
+            cancel = true;
+        }
+
         if (cancel) {
             focusView.requestFocus();
         } else {
-            startLogin(new LoginData(email, password));
+            startJoin(new JoinData(name, email, password));
             //showProgress(true);
         }
     }
 
-    private void startLogin(LoginData data) {
-        service.userLogin(data).enqueue(new Callback<LoginResponse>() {
+    private void startJoin(JoinData data) {
+        service.userJoin(data).enqueue(new Callback<JoinResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse result = response.body();
-                Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
+                JoinResponse result = response.body();
+                Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 //showProgress(false);
+
+                if (result.getCode() == 200) {
+                    finish();
+                }
             }
+
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
-                Log.e("로그인 에러 발생", t.getMessage());
+            public void onFailure(Call<JoinResponse> call, Throwable t) {
+                Toast.makeText(JoinActivity.this, "회원가입 에러 발생", Toast.LENGTH_SHORT).show();
+                Log.e("회원가입 에러 발생", t.getMessage());
                 //showProgress(false);
             }
         });
