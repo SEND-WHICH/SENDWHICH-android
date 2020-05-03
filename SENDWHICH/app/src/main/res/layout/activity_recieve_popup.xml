@@ -71,7 +71,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btngomain"
+            android:id="@+id/btn_go_main"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal|center_vertical"
@@ -83,7 +83,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btnCerti"
+            android:id="@+id/btn_examine_go"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal|center_vertical"

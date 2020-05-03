@@ -27,6 +27,7 @@
         android:paddingBottom="10dp">
 
         <ListView
+            android:id="@+id/lst_examine"
             android:layout_width="352dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal" />
@@ -45,7 +46,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btngomain"
+            android:id="@+id/btn_examin_pre"
             android:layout_width="90dp"
             android:layout_height="50dp"
             android:layout_marginLeft="5dp"
@@ -55,7 +56,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btnCerti"
+            android:id="@+id/btn_examine_next"
             android:layout_width="90dp"
             android:layout_height="50dp"
             android:layout_marginLeft="5dp"

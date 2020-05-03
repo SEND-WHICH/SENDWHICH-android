@@ -44,9 +44,9 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btngomain"
+            android:id="@+id/btn_go_main"
             android:layout_width="150dp"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/finish_btn_gomain"

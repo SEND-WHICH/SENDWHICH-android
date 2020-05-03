@@ -3,6 +3,8 @@ package graduation.project.sendwhich;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -16,6 +18,7 @@ import retrofit2.Response;
 
 public class JoinActivity extends AppCompatActivity {
 
+
     private EditText mEmailView;
     private EditText mPasswordView;
     private EditText mNameView;
@@ -25,13 +28,17 @@ public class JoinActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
         mEmailView = (EditText) findViewById(R.id.join_email);
         mPasswordView = (EditText) findViewById(R.id.join_password);
         mNameView = (EditText) findViewById(R.id.join_name);
-        mJoinButton = (Button) findViewById(R.id.join_button);
+        mJoinButton = (Button) findViewById(R.id.btn_join);
         //mProgressView = (ProgressBar) findViewById(R.id.join_progress);
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
