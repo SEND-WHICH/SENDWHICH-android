@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -23,6 +24,9 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_join;
     private ProgressBar mProgressView;
     private ServiceApi service;
+    private CheckBox btn_login_check;
+
+    String newToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(getApplicationContext(), JoinActivity.class);
+                startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
             }
         });
     }

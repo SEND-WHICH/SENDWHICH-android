@@ -26,6 +26,8 @@ public class SuccessActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(SuccessActivity.this, MainActivity.class);
                 startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
             }
         });
     }

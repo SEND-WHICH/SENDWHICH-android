@@ -21,11 +21,11 @@
         android:layout_weight="9"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView7"
+        <ListView
+            android:id="@+id/lst_get_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ect" />
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </LinearLayout>

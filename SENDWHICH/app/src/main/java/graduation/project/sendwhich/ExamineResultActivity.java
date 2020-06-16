@@ -26,6 +26,8 @@ public class ExamineResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ExamineResultActivity.this, SendToActivity.class);
                 startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
             }
         });
 
@@ -35,6 +37,8 @@ public class ExamineResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ExamineResultActivity.this, SendSelectActivity.class);
                 startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
             }
         });
     }

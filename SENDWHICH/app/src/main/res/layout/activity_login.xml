@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    android:weightSum="10"
     tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1.7"
         android:background="@android:color/background_light"
         android:gravity="bottom|center_horizontal"
         android:orientation="vertical">
@@ -19,7 +20,7 @@
         <ImageView
             android:layout_width="244dp"
             android:layout_height="match_parent"
-            android:layout_margin="50dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/logo" />
 
     </LinearLayout>
@@ -27,20 +28,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_marginBottom="100dp"
+        android:layout_weight="2.7"
+        android:background="#ccffffff"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2.5"
-            android:background="#ccffffff"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -66,7 +68,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -95,26 +97,42 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btn_login"
-                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                    android:layout_width="0dp"
+                <CheckBox
+                    android:id="@+id/btn_login_check"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
                     android:layout_weight="1"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/buttonrectangle"
-                    android:gravity="center|center_horizontal"
-                    android:text="로그인"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:text="로그인 상태 유지"
+                    android:textColor="#595959"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/buttonrectangle"
+                android:gravity="center|center_horizontal"
+                android:text="로그인"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -125,14 +143,14 @@
 
             <Button
                 android:id="@+id/btn_join"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:background="@drawable/buttonrectangle"
                 android:gravity="center|center_horizontal"
                 android:text="회원가입"

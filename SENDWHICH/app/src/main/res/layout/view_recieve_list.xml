@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtAlarm"
+            android:id="@+id/txt_send_id"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -27,7 +27,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtStudentId"
+            android:id="@+id/txt_file_name"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -44,7 +44,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt"
+                android:id="@+id/txt_file_size"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -55,7 +55,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txtTime"
+                android:id="@+id/txt_time"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -79,7 +79,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_download"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="@drawable/recieved_btn_download" />

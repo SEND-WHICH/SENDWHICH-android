@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="graduation.project.sendwhich">
+    <uses-permission android:name="android.permission.INTERNET" android:required="true"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:required="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="true"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,18 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".JoinActivity"></activity>
+        <activity android:name=".UploadActivity"></activity>
+        <activity android:name=".JoinActivity" />
         <activity android:name=".CertiNumActivity" />
         <activity android:name=".RecieveActivity" />
         <activity android:name=".RecieveListActivity" />
         <activity android:name=".RecieveNotiActivity" />
-        <activity android:name=".LoginActivity" >
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SuccessActivity" />
         <activity android:name=".SendToActivity" />
         <activity android:name=".RecievePopupActivity" />
         <activity android:name=".ExamineResultActivity" />
         <activity android:name=".SendSelectActivity" />
+        <activity android:name=".SendActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -31,8 +37,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

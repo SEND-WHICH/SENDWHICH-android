@@ -107,10 +107,10 @@ public class JoinActivity extends AppCompatActivity {
                 JoinResponse result = response.body();
                 Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 //showProgress(false);
-
-                if (result.getCode() == 200) {
-                    finish();
-                }
+                finish();
+//                if (result.getCode() == 200) {
+//                    finish();
+//                }
             }
 
             @Override
