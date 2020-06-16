@@ -42,17 +42,9 @@ public class SendToActivity extends AppCompatActivity {
 
     private SendToAdapter m_send_to_adapter;
     private UserBean bean;
-    private String URL = "http://ec2-13-209-157-83.ap-northeast-2.compute.amazonaws.com:3000/user/showmem";
-    private String PER_PAGE = "&per_page=50";
-    private String SORT = "&sort=interestingness-desc";
-    private String FORMAT = "&format=json";
-    private String CONTECT_TYPE = "&content_type=1";
-    private String SEARCH_TEXT = "&text=";
-    private String REQUEST_URL = URL + PER_PAGE + SORT + FORMAT + CONTECT_TYPE + SEARCH_TEXT;
 
     private SimpleAdapter adapter = null;
     private List<HashMap<String,String>> photoinfoList = null;
-    private String userEmail = "tomato@naver.com";
 
     private LinearLayout test;
 
@@ -153,7 +145,7 @@ public class SendToActivity extends AppCompatActivity {
                     while((line = reader.readLine()) != null){
                         buffer.append(line);
                     }
-                    resultJson = buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
+                    resultJson = buffer.toString();//서버로 부터 받은 값을 리턴
                     return resultJson;
 
                 } catch (MalformedURLException e){

@@ -2,14 +2,20 @@ package graduation.project.sendwhich;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferNetworkLossHandler;
 import com.amazonaws.regions.Regions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -19,12 +25,20 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecieveActivity extends AppCompatActivity {
     private ListView lst_get_list;
     String filelist;
+
+    private TextView txt_send_id;
+    private TextView txt_file_name;
+    private TextView txt_file_size;
+    private TextView txt_time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +48,18 @@ public class RecieveActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recieve);
+        txt_send_id = (TextView)findViewById(R.id.txt_send_id);
+        txt_file_name = (TextView)findViewById(R.id.txt_file_name);
+        txt_file_size = (TextView)findViewById(R.id.txt_file_size);
+        txt_time = (TextView)findViewById(R.id.txt_time);
+
+        Button btn_download = (Button)findViewById(R.id.btn_download);
+        btn_download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         lst_get_list = findViewById(R.id.lst_get_list);
         new JSONTask().execute("http://ec2-13-209-157-83.ap-northeast-2.compute.amazonaws.com:3000/getList");
@@ -41,7 +67,7 @@ public class RecieveActivity extends AppCompatActivity {
     }
 
     public class JSONTask extends AsyncTask<String, String, String> {
-
+        String resultJson = "";
         @Override
         protected String doInBackground(String... urls) {
             try {
@@ -69,7 +95,8 @@ public class RecieveActivity extends AppCompatActivity {
                         buffer.append(line);
                     }
 
-                    return buffer.toString();
+                    resultJson = buffer.toString();//서버로 부터 받은 값을 리턴
+                    return resultJson;
 
                 } catch (MalformedURLException e){
                     e.printStackTrace();
@@ -97,7 +124,32 @@ public class RecieveActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            filelist = result;
+            String[] from = {"UserEmail", "UserName"};
+            int[] to = {R.id.txt_user_id, R.id.txt_user_name};
+            ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> hashmap;
+
+            try {
+                //JSONObject json = new JSONObject(resultJson);
+                JSONArray jArray = new JSONArray(resultJson);
+
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject friend = jArray.getJSONObject(i);
+
+                    String nameOS = friend.getString("UserEmail");
+                    String username = friend.getString("UserName");
+
+                    hashmap = new HashMap<String, String>();
+                    hashmap.put("UserEmail", nameOS);
+                    hashmap.put("UserName", username);
+                    arrayList.add(hashmap);
+                }
+
+                final SimpleAdapter adapter = new SimpleAdapter(RecieveActivity.this, arrayList, R.layout.view_recieve_list, from, to);
+                lst_get_list.setAdapter(adapter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
