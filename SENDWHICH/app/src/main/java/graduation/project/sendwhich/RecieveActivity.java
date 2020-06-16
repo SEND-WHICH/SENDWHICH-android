@@ -134,10 +134,10 @@ public class RecieveActivity extends AppCompatActivity {
                 JSONArray jArray = new JSONArray(resultJson);
 
                 for (int i = 0; i < jArray.length(); i++) {
-                    JSONObject friend = jArray.getJSONObject(i);
+                    JSONObject getfileJSon = jArray.getJSONObject(i);
 
-                    String nameOS = friend.getString("UserEmail");
-                    String username = friend.getString("UserName");
+                    String nameOS = getfileJSon.getString("UserEmail");
+                    String username = getfileJSon.getString("UserName");
 
                     hashmap = new HashMap<String, String>();
                     hashmap.put("UserEmail", nameOS);

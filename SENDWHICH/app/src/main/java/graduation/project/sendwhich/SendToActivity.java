@@ -184,14 +184,14 @@ public class SendToActivity extends AppCompatActivity {
                 JSONArray jArray = new JSONArray(resultJson);
 
                 for (int i = 0; i < jArray.length(); i++) {
-                    JSONObject friend = jArray.getJSONObject(i);
+                    JSONObject sendtoJSon = jArray.getJSONObject(i);
 
-                    String nameOS = friend.getString("UserEmail");
-                    String username = friend.getString("UserName");
+                    String userEmail = sendtoJSon.getString("UserEmail");
+                    String userName = sendtoJSon.getString("UserName");
 
                     hashmap = new HashMap<String, String>();
-                    hashmap.put("UserEmail", nameOS);
-                    hashmap.put("UserName", username);
+                    hashmap.put("UserEmail", userEmail);
+                    hashmap.put("UserName", userName);
                     arrayList.add(hashmap);
                 }
 
